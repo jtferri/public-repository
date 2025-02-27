@@ -4,14 +4,17 @@ import os
 # Display title of webpage
 st.title('Sankey Graphic')
 
-# Load the HTML file
+# Path to the HTML file
 html_file_path = r"/Users/jacquelineferri/public-repository/sankey.html"
 
-st.components.v1.html(f"""
-    <div id="sankey"></div>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <script>
-        var plotData = {plot_data};
-        Plotly.newPlot('sankey', plotData.data, plotData.layout);
-    </script>
-""", height=600)
+# Check if the file exists before displaying it
+if os.path.exists(html_file_path):
+    # Open the HTML file and read its contents
+    with open(html_file_path, 'r') as file:
+        plot_html = file.read()
+    
+    # Display the HTML content in Streamlit
+    st.components.v1.html(plot_html, height=600)  # Adjust the height as needed
+else:
+    # Show an error message if the file is not found
+    st.error("HTML file not found!")
