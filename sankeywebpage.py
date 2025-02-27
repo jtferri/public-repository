@@ -1,16 +1,17 @@
 import streamlit as st
 import requests
-import streamlit.components.v1 as components
 
-# Set the title of the Streamlit app
-st.title("Sankey Diagram Viewer")
+# Display title
+st.title('Sankey Graphic')
 
-# URL to the HTML file in the GitHub repository
-html_file_path = "https://github.com/jtferri/public-repository"
+# Raw URL to the HTML file on GitHub
+html_url = "https://raw.githubusercontent.com/jtferri/public-repository/main/sankey.html"
 
-# Read the HTML file
-with open(html_file_path, 'r', encoding='utf-8') as html_file:
-	html_content = html_file.read()
+# Fetch the HTML content
+response = requests.get(html_url)
 
-# Display the HTML file in the Streamlit app
-components.html(html_content, height=2000, width=2000)
+if response.status_code == 200:
+    plot_html = response.text
+    st.components.v1.html(plot_html, height=600)
+else:
+    st.error("Failed to load the HTML file from GitHub.")
