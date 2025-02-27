@@ -1,23 +1,16 @@
 import streamlit as st
-import os
 
-# Display title of webpage
-st.title('Sankey Graphic')
+import streamlit.components.v1 as components
 
-# Load the HTML file
-html_file_path = r"/Users/jacquelineferri/public-repository/sankey.html"
+# Set the title of the Streamlit app
+st.title("Sankey Diagram Viewer")
 
-# Check if the file exists before displaying it
-if os.path.exists(html_file_path):
-    # Open the HTML file and read its contents
-    with open(html_file_path, 'r') as file:
-        plot_html = file.read()
+# Path to the HTML file
+html_file_path = "/Users/jacquelineferri/public-repository/sankey.html"
 
-    # Print the HTML content to the Streamlit console for debugging
-    st.write(plot_html)
+# Read the HTML file
+with open(html_file_path, 'r', encoding='utf-8') as html_file:
+    html_content = html_file.read()
 
-    # Display the HTML content in Streamlit
-    st.components.v1.html(plot_html, height=600)  # Adjust the height as needed
-else:
-    # Show an error message if the file is not found
-    st.error("HTML file not found!")
+# Display the HTML file in the Streamlit app
+components.html(html_content, height=800)
