@@ -7,8 +7,11 @@ st.title('Sankey Graphic')
 # Load the HTML file
 html_file_path = r"/Users/jacquelineferri/public-repository/sankey.html"
 
-# Check if the file exists before displaying it
-if os.path.exists(html_file_path):
-    st.components.v1.html(open(html_file_path).read(), height=600)
-else:
-    st.error("Plot HTML file not found!")
+st.components.v1.html(f"""
+    <div id="sankey"></div>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script>
+        var plotData = {plot_data};
+        Plotly.newPlot('sankey', plotData.data, plotData.layout);
+    </script>
+""", height=600)
