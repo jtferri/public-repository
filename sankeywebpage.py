@@ -5,7 +5,7 @@ import os
 st.title('Sankey Graphic')
 
 # Load the HTML file
-html_file_path = r"/Users/jacquelineferri/Desktop/data science for public health/DS-for-PH-class-/sankey.html"
+html_file_path = r"/Users/jacquelineferri/public-repository/sankey.html"
 
 # Check if the file exists before displaying it
 if os.path.exists(html_file_path):
