@@ -5,7 +5,7 @@ import requests
 st.title('Sankey Graphic')
 
 # Raw URL to the HTML file on GitHub
-html_url = "https://raw.githubusercontent.com/jtferri/public-repository/main/sankey.html"
+html_url = "https://raw.githubusercontent.com/jtferri/public-repository/refs/heads/main/sankeywebpage.py"
 
 # Fetch the HTML content
 response = requests.get(html_url)
